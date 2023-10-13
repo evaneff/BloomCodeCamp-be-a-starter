@@ -3,9 +3,9 @@ version: '3'
 services:
   pgdb:
     image: postgres
-    container_name: pg_server_api0121
+    container_name: evaserver
     ports:
-      - '5550:5432'
+      - '5450:5432'
     environment:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=docker
@@ -19,7 +19,7 @@ services:
     restart: always
 
   pgadminFp:
-    container_name: pgadmin_0121
+    container_name: pgadmin_eva
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
@@ -28,7 +28,7 @@ services:
     volumes:
       - ./data/pgadmin:/tmp/.pgadmin
     ports:
-      - "${PGADMIN_PORT:-5051}:80"
+      - "${PGADMIN_PORT:-5052}:80"
     networks:
       - postgres
     restart: unless-stopped

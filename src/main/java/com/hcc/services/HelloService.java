@@ -1,12 +1,11 @@
 package com.hcc.services;
 
+import java.util.Base64;
+
 import com.hcc.entities.Hello;
 import com.hcc.repositories.HelloRepository;
-import java.util.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 
 // this is an example service feel free to delete this once you have created your own.
 @Service
