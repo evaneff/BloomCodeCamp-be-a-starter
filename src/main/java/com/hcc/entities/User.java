@@ -2,7 +2,7 @@ package com.hcc.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class User implements UserDetails {
 
     private Long id;
-    private Date cohortStartDate;
+    private LocalDate cohortStartDate;
     private String username;
     private String password;
     private List<Authority> authorities;
@@ -20,7 +20,7 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(Date cohortStartDate, String username, String password, List<Authority> authorities) {
+    public User(LocalDate cohortStartDate, String username, String password, List<Authority> authorities) {
         this.cohortStartDate = cohortStartDate;
         this.username = username;
         this.password = password;
@@ -64,11 +64,7 @@ public class User implements UserDetails {
         return password;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public void setUsername(String username) { this.username = username; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 }
