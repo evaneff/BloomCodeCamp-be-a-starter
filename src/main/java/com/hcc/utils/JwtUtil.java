@@ -1,6 +1,5 @@
 package com.hcc.utils;
 
-
 import com.hcc.entities.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -10,12 +9,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.function.Function;
 
 @Component
-public class JWTUtils {
+public class JwtUtil implements Serializable {
 
     //how long is the token valid? a whole day
     public static final long JWT_TOKEN_VALIDITY = 6000 * 60000 * 24;
@@ -28,6 +28,11 @@ public class JWTUtils {
     public String getUsernameFromToken(String token){
         return getClaimFromToken(token, Claims::getSubject);
     }
+    // Added this from Ticket
+    public Date getIssueAtDateFromToken(String token) {
+        return getClaimFromToken(token, Claims::getIssuedAt);
+    }
+
 
     //get the claims (not sure which datatype- make generic to pass the claim) from token-objects inside jwt
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver ){
